@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@styles.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lm.controller.MainController">
+    <top>
+        <VBox spacing="14" styleClass="header">
+            <padding><Insets top="18" right="24" bottom="18" left="24"/></padding>
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="Library Management" styleClass="title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <ProgressIndicator fx:id="busy" maxWidth="22" maxHeight="22"/>
+                <Button text="Refresh" onAction="#refresh"/>
+            </HBox>
+            <HBox spacing="16">
+                <VBox styleClass="stat-card"><Label text="Books" styleClass="muted"/><Label fx:id="totalBooks" styleClass="stat"/></VBox>
+                <VBox styleClass="stat-card"><Label text="Members" styleClass="muted"/><Label fx:id="totalMembers" styleClass="stat"/></VBox>
+                <VBox styleClass="stat-card"><Label text="Active loans" styleClass="muted"/><Label fx:id="activeLoans" styleClass="stat"/></VBox>
+                <VBox styleClass="stat-card warning"><Label text="Overdue" styleClass="muted"/><Label fx:id="overdueLoans" styleClass="stat"/></VBox>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Books">
+                    <VBox spacing="12">
+                        <padding><Insets top="18" right="24" bottom="18" left="24"/></padding>
+                        <HBox spacing="8"><TextField fx:id="bookSearch" promptText="Title, author, ISBN, or category" HBox.hgrow="ALWAYS" onAction="#searchBooks"/><Button text="Search" onAction="#searchBooks"/></HBox>
+                        <TableView fx:id="booksTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="bookTitle" text="Title" prefWidth="310"/>
+                                <TableColumn fx:id="bookAuthor" text="Author" prefWidth="230"/>
+                                <TableColumn fx:id="bookIsbn" text="ISBN" prefWidth="180"/>
+                                <TableColumn fx:id="bookAvailable" text="Available" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+                <Tab text="Members">
+                    <VBox spacing="12">
+                        <padding><Insets top="18" right="24" bottom="18" left="24"/></padding>
+                        <HBox spacing="8"><TextField fx:id="memberSearch" promptText="Name, number, or email" HBox.hgrow="ALWAYS" onAction="#searchMembers"/><Button text="Search" onAction="#searchMembers"/></HBox>
+                        <TableView fx:id="membersTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="memberNumber" text="Member #" prefWidth="180"/>
+                                <TableColumn fx:id="memberName" text="Name" prefWidth="300"/>
+                                <TableColumn fx:id="memberEmail" text="Email" prefWidth="360"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+                <Tab text="Loans">
+                    <VBox spacing="12">
+                        <padding><Insets top="18" right="24" bottom="18" left="24"/></padding>
+                        <HBox spacing="8">
+                            <ComboBox fx:id="loanFilter" onAction="#filterLoans"/>
+                            <Button text="Borrow selected book for selected member" onAction="#borrow" styleClass="primary"/>
+                            <Button text="Return selected loan" onAction="#returnLoan"/>
+                        </HBox>
+                        <TableView fx:id="loansTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="loanBook" text="Book" prefWidth="320"/>
+                                <TableColumn fx:id="loanMember" text="Member" prefWidth="260"/>
+                                <TableColumn fx:id="loanDue" text="Due date" prefWidth="150"/>
+                                <TableColumn fx:id="loanStatus" text="Status" prefWidth="130"/>
+                            </columns>
+                        </TableView>
+                        <Label text="Select a book on Books, a member on Members, then use Borrow here." styleClass="muted"/>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    <bottom><Label fx:id="status" styleClass="status"><padding><Insets top="8" right="24" bottom="8" left="24"/></padding></Label></bottom>
+</BorderPane>

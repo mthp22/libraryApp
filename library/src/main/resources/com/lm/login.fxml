@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@styles.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lm.controller.LoginController">
+    <center>
+        <VBox alignment="CENTER" maxWidth="380" spacing="16" styleClass="login-card">
+            <padding><Insets top="36" right="36" bottom="36" left="36"/></padding>
+            <Label text="Library Desk" styleClass="title"/>
+            <Label text="Sign in to manage your library" styleClass="muted"/>
+            <TextField fx:id="username" promptText="Username" onAction="#login"/>
+            <PasswordField fx:id="password" promptText="Password" onAction="#login"/>
+            <Button fx:id="loginButton" text="Sign in" maxWidth="Infinity" onAction="#login" styleClass="primary"/>
+            <Label fx:id="errorLabel" wrapText="true" styleClass="error"/>
+        </VBox>
+    </center>
+</BorderPane>

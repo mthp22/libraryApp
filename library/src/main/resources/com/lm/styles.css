@@ -1,0 +1,21 @@
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #f5f7fb;
+    -fx-text-fill: #172033;
+}
+.header { -fx-background-color: #ffffff; }
+.title { -fx-font-size: 25px; -fx-font-weight: bold; }
+.muted { -fx-text-fill: #6b7280; }
+.error { -fx-text-fill: #b42318; }
+.status { -fx-background-color: #ffffff; -fx-text-fill: #475467; }
+.login-card, .stat-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(16, 24, 40, 0.10), 18, 0, 0, 5);
+}
+.stat-card { -fx-padding: 14 22; -fx-pref-width: 180; }
+.warning { -fx-background-color: #fff7ed; }
+.stat { -fx-font-size: 24px; -fx-font-weight: bold; }
+.button.primary { -fx-background-color: #3157d5; -fx-text-fill: white; }
+.text-field, .password-field, .button, .combo-box { -fx-pref-height: 38; }
+.table-view { -fx-background-radius: 8; }
